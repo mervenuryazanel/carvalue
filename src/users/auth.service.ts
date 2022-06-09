@@ -43,13 +43,15 @@ export class AuthService{
             throw new NotFoundException('The user can not found');
         }
 
+        console.log(user);
         const [salt, storedHash] = user.password.split('.');
 
         const hash = await scrypt(password, salt, 32) as Buffer;
 
         if (storedHash!== hash.toString('hex')) {
-            return new BadRequestException('password not correct');
+            throw new BadRequestException('password not correct');
         } 
+        
         
         return user;
 
