@@ -84,13 +84,16 @@ export class UsersController {
 
     @Get('/whoami')
     whoAmI(@Session() session: any) {
+        if (!session.userId) {
+            throw new NotFoundException('there is no signed user');
+        }
         return this.userService.findOne(session.userId); //if the user has already signed in retun user id and email
     }
 
-    // @Post('/signout')
-    // signOut(@Session() session: any) {
-    //     session.userId = null;
-    // }
+    @Post('/signout')
+    signOut(@Session() session: any) {
+        session.userId = null;
+    }
 
 
     // @UseInterceptors(ClassSerializerInterceptor) //to hide password
