@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email": "mail15@mail.com",
+  "email": "mail90@mail.com",
   "password": "123456"
 }
 
@@ -12,11 +12,14 @@ POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-  "email": "mail15@mail.com",
+  "email": "mail90@mail.com",
   "password": "123456"
 }
 ###Get the currently signed in user
 GET http://localhost:3000/auth/whoami
+
+### user signout 
+POST http://localhost:3000/auth/signout
 
 
 
@@ -25,7 +28,7 @@ GET http://localhost:3000/auth/50
 
 
 ### Delete the user  with given id
-DELETE http://localhost:3000/auth/55
+DELETE http://localhost:3000/auth/50
 ### Update the user with given id
 PATCH http://localhost:3000/auth/39
 content-type: application/json

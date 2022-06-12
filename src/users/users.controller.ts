@@ -24,6 +24,8 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 
 import { AuthService } from './auth.service';
 
+import { CurrentUser } from './decorators/current-user.decorator';
+
 // @Controller('users')
 @Controller('auth')
 @Serialize(UserDto) //our new custom serializer //Use whenever you want to format outgoing responses
@@ -82,14 +84,20 @@ export class UsersController {
         
     }
 
+    // @Get('/whoami')
+    // whoAmI(@Session() session: any) {
+    //     if (!session.userId) {
+    //         throw new NotFoundException('there is no signed user');
+    //     }
+    //     return this.userService.findOne(session.userId); //if the user has already signed in retun user id and email
+    // }
+
     @Get('/whoami')
-    whoAmI(@Session() session: any) {
-        if (!session.userId) {
-            throw new NotFoundException('there is no signed user');
-        }
-        return this.userService.findOne(session.userId); //if the user has already signed in retun user id and email
+    whoAmI(@CurrentUser() user: string) {
+        return user;
     }
 
+    
     @Post('/signout')
     signOut(@Session() session: any) {
         session.userId = null;
