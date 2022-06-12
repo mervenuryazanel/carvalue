@@ -3,7 +3,7 @@ POST http://localhost:3000/auth/signup
 content-type: application/json
 
 {
-  "email": "mail90@mail.com",
+  "email": "baba2@mail.com",
   "password": "123456"
 }
 
@@ -12,7 +12,7 @@ POST http://localhost:3000/auth/signin
 content-type: application/json
 
 {
-  "email": "mail90@mail.com",
+  "email": "baba2@mail.com",
   "password": "123456"
 }
 ###Get the currently signed in user
