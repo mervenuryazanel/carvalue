@@ -14,6 +14,7 @@ const cookieSession = require('cookie-session');
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'db.sqlite',
+      // database: process.env.NODE_ENV==='test' ? 'test.sqlite' : 'db.sqlite', //seperate db's for test and development modes
       entities: [User, Report],
       synchronize: true,
     }),
